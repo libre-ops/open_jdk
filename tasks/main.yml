@@ -1,0 +1,14 @@
+---
+
+- name: add openjdk repo
+  apt_repository:
+    repo: ppa:openjdk-r/ppa
+  become: yes
+
+- name: install openjdk
+  apt:
+    name: "openjdk-{{ openjdk_version }}-jdk"
+    update_cache: yes
+    cache_valid_time: 3600
+    state: latest
+  become: yes
